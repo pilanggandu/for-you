@@ -1,613 +1,576 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-  <!-- Metadata dokumen -->
-  <meta charset="utf-8" />
-  <title>For You</title>
-  <meta name="description" content="Happy birthday" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-  <!-- Favicon -->
-  <link rel="icon" type="image" href="il.png" />
-  <!-- Stylesheet Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- Stylesheet Custom -->
-  <link rel="stylesheet" href="style.css" />
-  <!-- Library JavaScript -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <!-- Library TypeIt -->
-  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
-
-  <!-- CSS Custom -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selamat Ulang Tahun, Cintaku 💖</title>
+  <meta name="description" content="Kartu ulang tahun romantis dan animatif — responsif di mobile & PC, satu file." />
+  <meta name="theme-color" content="#0f0f14">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Definisi gaya CSS */
-
-    /* CSS Anda */
-    @media screen and (max-width: 768px) {
-
-      /* Menyesuaikan tata letak untuk layar kecil */
-      body {
-        font-size: 12px;
-        /* Mengurangi ukuran font untuk layar kecil */
-      }
-
-      .swiper-slide {
-        margin-top: -50px;
-        /* Menyesuaikan margin atas untuk slide */
-      }
-    }
-
-    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Inter&family=Itim&display=swap");
-
     :root {
-      --poppins: "Poppins", sans-serif;
-      --nunito: "Nunito Sans", sans-serif;
-      --caveat: "Caveat", cursive;
-      --quicksand: "Quicksand", sans-serif;
-      --itim: "Itim", cursive;
-      --inter: "Inter", sans-serif;
+      --bg: #0f0f14;
+      --ink: #f7f7fb;
+      --muted: #c9c9d6;
+      --primary: #ff7aa2; /* Aksen pink */
+      --secondary: #9ad1ff; /* Aksen biru */
+      --card: #151520;
+      --glass: rgba(255,255,255,.06);
+      --ring: rgba(255,122,162,.45);
+      --maxw: 1100px;
     }
 
-    html,
-    body {
-      position: relative;
-      height: 100%;
-    }
+    /* Reset ringan */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    img, video { max-width: 100%; height: auto; }
 
     body {
-      background: #000;
-      font-family: "Itim", cursive;
-      font-size: 14px;
-      color: #fff;
-      text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
       margin: 0;
-      padding: 0;
+      background: radial-gradient(1000px 600px at 10% 10%, #181824 0%, var(--bg) 50%),
+                  radial-gradient(1200px 800px at 100% 0%, #1d1d2a 0%, var(--bg) 60%);
+      color: var(--ink);
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    #bodyblur {
-      opacity: 0.5;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      transition: all 1s ease;
+    a { color: var(--primary); }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: clamp(16px, 3vw, 24px); }
+
+    /* Latar hati dekoratif */
+    .hearts { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .heart { position: absolute; width: 18px; height: 18px; background: linear-gradient(45deg, var(--primary), #ffd1e1); transform: rotate(45deg); opacity: .15; filter: blur(.2px); }
+    .heart::before, .heart::after { content: ""; position: absolute; width: 18px; height: 18px; background: inherit; border-radius: 50%; }
+    .heart::before { left: -9px; }
+    .heart::after { top: -9px; }
+    @keyframes floatUp { 0% { transform: translateY(0) rotate(45deg); } 100% { transform: translateY(-120vh) rotate(45deg); } }
+
+    /* Header */
+    header.hero { position: relative; z-index: 2; padding: clamp(56px, 10vw, 88px) 0 clamp(32px, 6vw, 56px); text-align: center; }
+    .badge { display: inline-block; padding: 8px 14px; border-radius: 999px; background: var(--glass); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.12); color: var(--muted); font-size: clamp(12px, 2.2vw, 14px); }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 8vw, 84px); line-height: 1.05; margin: 18px 0 10px; letter-spacing: .5px; }
+    .gradient { background: linear-gradient(90deg, #fff 0%, #ffd7e7 40%, #b3e2ff 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .subtitle { color: var(--muted); font-size: clamp(14px, 2.9vw, 20px); max-width: 840px; margin: 0 auto; padding: 0 4px; }
+
+    /* Tombol kontrol */
+    .controls { display: flex; gap: 12px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+    .btn { position: relative; appearance: none; border: 0; padding: 12px 18px; border-radius: 14px; color: #0f0f14; background: var(--ink); font-weight: 600; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; min-height: 44px; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(0,0,0,.25); }
+    .btn.secondary { background: #161621; color: var(--ink); border: 1px solid rgba(255,255,255,.12); }
+    .btn.pink { background: var(--primary); color: #1a0e14; }
+
+    /* Pada layar sangat kecil, tombol full-width agar mudah diklik */
+    @media (max-width: 420px) {
+      .controls { justify-content: stretch; }
+      .controls .btn { flex: 1 1 100%; }
     }
 
-    #wallpaper {
-      animation: jj 10s infinite;
-      width: 100%;
-      height: 100%;
-      transform: scale(1);
-      transition: all 1.3s ease;
-    }
+    /* Section & kartu */
+    section { position: relative; z-index: 2; margin: clamp(20px, 4vw, 36px) 0; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: clamp(16px, 3.2vw, 28px); box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+    @media (min-width: 880px) { .grid { grid-template-columns: 1.15fr .85fr; gap: 24px; } }
 
-    #wallpaper2,
-    #wallpaper3,
-    #wallpaper4 {
-      display: none;
-    }
+    /* Mesin ketik */
+    .type { display: inline-block; border-right: 2px solid var(--primary); white-space: nowrap; overflow: hidden; animation: typing 4s steps(30,end), blink .8s step-end infinite; max-width: 95vw; }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink { 50% { border-color: transparent } }
 
-    @keyframes jj {
-      0% {
-        transform: scale(1);
-      }
+    /* Galeri polaroid */
+    .polaroids { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+    @media (min-width: 640px) { .polaroids { gap: 18px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); } }
+    .polaroid { background: #fff; color: #111; border-radius: 14px; padding: 10px 10px 14px; transform: rotate(var(--rot, -2deg)); box-shadow: 0 12px 30px rgba(0,0,0,.35); transition: transform .2s ease; }
+    .polaroid:hover { transform: translateY(-6px) rotate(var(--rot, -2deg)) scale(1.02); }
+    .polaroid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; display: block; }
+    .caption { margin-top: 8px; font-size: 12px; text-align: center; opacity: .75; }
 
-      50% {
-        transform: scale(1.2);
-      }
+    /* Linimasa */
+    .timeline { position: relative; margin: 6px 0 0 0; padding-left: 16px; }
+    .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--secondary), var(--primary)); opacity: .6; }
+    .moment { position: relative; padding-left: 18px; margin: 16px 0; }
+    .dot { position: absolute; left: -3px; top: 4px; width: 12px; height: 12px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #fff, var(--primary)); box-shadow: 0 0 0 4px rgba(255,122,162,.18), 0 6px 16px rgba(0,0,0,.35); }
+    .moment h4 { margin: 0 0 4px; font-size: clamp(15px, 2.8vw, 18px); }
+    .moment p { margin: 0; color: var(--muted); font-size: clamp(13px, 2.6vw, 14px); }
 
-      100% {
-        transform: scale(1);
-      }
-    }
+    /* Surat cinta */
+    .letter { background: repeating-linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.04) 28px, transparent 28px, transparent 56px), var(--card); border: 1px dashed rgba(255,255,255,.16); }
+    .letter h3 { margin-top: 0; }
 
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
+    /* Modal hadiah & galeri */
+    dialog { border: 0; padding: 0; border-radius: 22px; overflow: visible; background: var(--card); color: var(--ink); box-shadow: 0 20px 60px rgba(0,0,0,.6); max-width: min(92vw, 560px); max-height: 92vh; }
+    dialog::backdrop { background: rgba(0,0,0,.6); backdrop-filter: blur(3px); }
+    .modal { padding: clamp(16px, 3vw, 24px); max-height: calc(92vh - 24px); overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      /*background: #fff;*/
+    /* Footer */
+    footer { text-align: center; color: var(--muted); padding: 26px 0 calc(40px + env(safe-area-inset-bottom)); }
+
+    /* Kanvas konfeti */
+    #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+
+    /* ==== Mini Galeri (Modal) ==== */
+    .lightbox { width: min(92vw, 920px); max-width: 100%; }
+    .lb-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+    .lb-title { font-size: clamp(16px, 2.8vw, 18px); font-weight:600; }
+    .lb-main {
+      position: relative;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 12px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      margin-top: -100px;
-    }
-
-    p {
-      margin-left: 60px;
-      margin-right: 60px;
-      text-align: left;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .swiper-pagination {
-      margin-bottom: 20vh;
-    }
-
-    .swiper-pagination-bullet-active {
-      background-color: #fff !important;
-      opacity: 1 !important;
-    }
-
-    .swiper-pagination-bullet {
-      background-color: rgba(158, 158, 158, 1) !important;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      opacity: 0;
-      cursor: none;
-    }
-
-    .swiper-button-next:hover,
-    .swiper-button-prev:hover {
-      opacity: 0;
-    }
-
-    .swiper-button-prev {
-      display: none;
-    }
-
-    .sembunyi {
-      display: none !important;
-    }
-
-    .stiker {
-      display: flex;
       justify-content: center;
-      align-items: center;
-      width: 90px;
-      height: 90px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 30px rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      padding: 10px;
-      margin-bottom: 20px;
-      transition: all 0.75s ease;
+      min-height: min(60vh, 520px);
     }
-
-    .stiker img {
-      width: 85px;
-      height: 85px;
-    }
-
-    b.merah {
-      color: rgb(255, 0, 153);
-    }
-
-    b.kuning {
-      color: yellow;
-    }
-
-    b.putih {
-      text-shadow: none;
-      padding-left: 8px;
-      padding-right: 8px;
-      padding-top: 1px;
-      padding-bottom: 2px;
-      background-color: white;
+    #galleryPrev, #galleryNext {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
       border-radius: 12px;
-    }
-
-    span.pink {
-      border-bottom: 2px solid rgb(223, 28, 152);
-    }
-
-    span.gariskuning {
-      border-bottom: 2px solid yellow;
-    }
-
-    p {
-      color: white;
-      font-size: 15px;
-      line-height: 1.5em;
-    }
-
-    .scale0 {
-      opacity: 0;
-      transform: scale(0);
-      transition: all 0.9s ease;
-    }
-
-    .scale1 {
-      opacity: 1;
-      transform: scale(1);
-      transition: all 0.9s ease;
-    }
-
-    svg {
-      vertical-align: middle;
-      width: 22px;
-      height: 22px;
-      fill: #fff;
-    }
-
-    .heart-icon {
-      z-index: 100;
-      width: 30px;
-      height: 30px;
-      position: fixed;
-      animation: heartMove linear 1;
-      top: -10vh;
-    }
-
-    @keyframes heartMove {
-      0% {
-        transform: translateY(-10vh);
-      }
-
-      100% {
-        transform: translateY(100vh);
-      }
-    }
-
-    svg.line {
-      fill: none;
-      stroke: #fff;
-      stroke-width: 2;
-      animation: moving 0.7s linear infinite alternate;
-    }
-
-    .spin {
-      animation: spin 3s linear infinite alternate;
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(20deg);
-      }
-
-      to {
-        transform: rotate(-20deg);
-      }
-    }
-
-    @keyframes moving {
-      from {
-        transform: translateY(0);
-      }
-
-      to {
-        transform: translateY(3px);
-      }
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-      z-index: 100;
-    }
-
-    .loading-message {
-      font-size: 13px;
-      text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8);
-      color: white;
-      text-align: center;
-    }
-
-    .blocklove {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .lovein {
-      background: #fff;
-      color: #da1e82;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      padding: 10px;
-      font-size: 30px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .lovein:hover {
-      transform: scale(0.9);
-      color: #ff0900;
-    }
-
-    .lovein svg {
-      stroke: #6a00ff;
-      width: 30px;
-      height: 30px;
-    }
-
-    .blocktext {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      margin-top: 100px;
-      overflow: auto;
-    }
-
-    #Tombol {
-      position: relative;
-      margin-top: 20px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      list-style: none;
-      transition: all 1s ease;
-    }
-
-    #Tombol a {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(22,22,33,.85);
+      backdrop-filter: blur(6px);
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      margin: 0;
-      margin: 10px;
-      transition: all 0.2s ease;
-      padding: 10px;
-      outline: 0;
-      border: 1px solid white;
-      border-radius: 12px;
-      line-height: 15px;
-      background: rgba(0, 0, 0, 0.3);
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      box-shadow: rgba(255, 255, 255, 0.15) 0px 7px 29px 0px;
-      z-index: 1;
     }
+    #galleryPrev { left: 10px; }
+    #galleryNext { right: 10px; }
+    #galleryPrev:hover, #galleryNext:hover { transform: translateY(-50%) scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+    #galleryPrev::after, #galleryNext::after { content: ""; position: absolute; inset: -8px; }
+    .lb-main img { max-width:100%; max-height:60vh; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.35); display:block; }
+    .lb-caption { text-align:center; color: var(--muted); margin-top:8px; font-size: clamp(13px, 2.4vw, 14px); }
+    .lb-controls { display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
+    .lb-nav { display:flex; gap:8px; }
+    .iconbtn { appearance:none; border:1px solid rgba(255,255,255,.12); background:#161621; color:var(--ink); padding:10px 12px; border-radius:12px; cursor:pointer; min-height: 40px; }
+    .iconbtn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+    .lb-thumbs { display:grid; grid-template-columns: repeat(auto-fit, minmax(72px,1fr)); gap:10px; margin-top:14px; }
+    .lb-thumbs img { width:100%; height:72px; object-fit:cover; border-radius:10px; opacity:.85; border:2px solid transparent; }
+    .lb-thumbs img.active { opacity:1; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(255,122,162,.18); }
 
-    footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
+    @media (max-width: 520px) {
+      #galleryPrev { left: 6px; }
+      #galleryNext { right: 6px; }
+      #galleryPrev, #galleryNext { width: 40px; height: 40px; }
+      .lb-main { min-height: 42vh; }
+      .lb-main img { max-height: 42vh; }
+    }
+    @media (max-height: 540px) {
+      .lb-main { min-height: 36vh; }
+      .lb-main img { max-height: 36vh; }
+    }
+      #galleryNext { right: 6px; }
+      #galleryPrev, #galleryNext { width: 40px; height: 40px; }
+      .lb-main { min-height: 42vh; }
+      .lb-main img { max-height: 42vh; }
+    
 
-footer a {
-    color: rgba(255, 255, 255, 0.875); /* Warna putih dengan transparansi */
-    text-decoration: none; /* Menghapus garis bawah */
-}
-    /* ... */
+    /* Prefer-reduced-motion: kurangi animasi agar hemat baterai & aksesibel */
+    @media (prefers-reduced-motion: reduce) {
+      .heart { animation: none !important; }
+      .type { animation: none; border-right: 0; }
+    }
   </style>
 </head>
-
 <body>
-  <!-- Audio latar -->
-  <audio src="mhbd.mp3" id="linkmp3" class="sembunyi"></audio>
-  <!-- Overlay loading -->
-  <div class="overlay">
-    <div class="loading-message">Hai kamu!<br />Tunggu dulu ya..</div>
-    <!-- Tombol Love -->
-    <div id="loveIn" class="blocklove">
-      <!-- Love icon -->
-      <a href="##" target="_blank" class="lovein">
-        <svg class="line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <g transform="translate(2.550170, 3.550158)">
-            <path
-              d="M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z">
-            </path>
-            <path d="M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842"></path>
-          </g>
-        </svg>
-      </a>
-      <!-- Pesan Sentuh Love -->
-      <p id="ket">Tap LOVE</p>
+  <!-- Latar hati melayang (ringan) -->
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <header class="hero container">
+    <span class="badge">23 Oktober • Hari Spesialmu</span>
+    <h1>
+      <span class="gradient">Selamat Ulang Tahun</span>
+      <br>
+      <span class="type" id="typeTarget">untuk manusia favoritku, <span id="nameTarget">Cinta</span> 💫</span>
+    </h1>
+    <p class="subtitle">Sebuah keisengan yang bisa terpikirkan olehku secara random. tidak terlalu spesial, tapi hadiah ini aku persembahkan buat adek tercintaku 💌</p>
+    <div class="controls">
+      <button class="btn pink" id="confettiBtn">Tebarin konfeti 🎉</button>
+      <button class="btn" id="playBtn">Putar lagu ▶️</button>
+      <!-- <button class="btn secondary" id="giftBtn">Buka kejutanmu 🎁</button> -->
     </div>
-  </div>
+    <audio id="audio" preload="auto">
+      <source src="mhbd.mp3" type="audio/mpeg">
+    </audio>
+  </header>
 
-  <!-- Efek blur untuk latar belakang -->
-  <div id="bodyblur">
-    <img src="bg.jpg" id="wallpaper" />
-  </div>
+  <main class="container">
+    <section class="grid">
+      <div class="card">
+        <p>Selamat ulang tahun, cintaku~ 🎂💕</p>
+        <p>Semoga kamu tambah sayang sama aku (karena kalau nggak, nanti aku ngambek 😜).</p>
+        <p>Doanya sederhana aja: kamu bahagia, sehat, dan harapan & cita citanya terwujud. Hehe 😘</p>
+      </div>
 
-  <!-- Slider Swiper -->
-  <div class="swiper mySwiper">
-    
-    <div class="swiper-wrapper">
-      <!-- Slide 1 -->
-      <div class="swiper-slide">
-        <!-- Stiker dan teks -->
-        <div id="stiker1" class="scale0 stiker">
-          <img src="glg.gif" />
-        </div>
-        <h1 id="teks1" class="scale0 itim" style="font-size: 20px">
-          this is for youuu 🫶<br />
-          ⇒ ⇒ ⇒
-        </h1>
+      <div class="card letter">
+        <h3>Surat cinta kecil 💌</h3>
+        <p>Cinta, jika aku bisa melipat semua kenangan favorit kita menjadi burung kertas, langit kita pasti sudah penuh. Adek tetap menjadi tempat paling nyaman dan rumah terhangatku. Maaf untuk sikap dan kelakuanku yang kadang menyebalkan, aku sedang belajar menjadi pasangan yang lebih sabar, lebih peka, dan lebih baik untukmu.</p>
+        <p> Aku sayang adek, sekarang, besok, dan selamanya. Aku ingin ada di sampingmu dalam setiap langkah, mendukung adek mengejar mimpi-mimpi. Semoga semua yang adek harapkan pelan-pelan menjadi nyata, dan biarkan aku ikut menjaga, mendoakan, dan mewujudkannya bersama sama.</p>
+        <p style="opacity:.8">— dariku, Your Love</p>
       </div>
-      <!-- Slide 2 -->
-      <div class="swiper-slide">
-        <!-- Stiker dan teks -->
-        <div id="stiker2" class="scale0 stiker">
-          <img src="emh.gif" />
-        </div>
-        <h1 id="teks2" class="scale0 itim" style="font-size: 19px">
-          ciee, whose birthday is today 💞<br /><br /><span style="font-size: 16px; font-weight: 400">swipe & read to the end!</span><br /><br />
-            ⇒ ⇒ ⇒
-        </h1>
+    </section>
+
+    <section>
+      <div class="polaroids">
+        <!-- TIP: Ganti nilai src dengan fotomu -->
+        <figure class="polaroid" style="--rot:-3deg">
+          <img src="gallery/03.jpg" alt="Polaroid 1" loading="lazy" />
+          <figcaption class="caption">Bukbernya Kamu</figcaption>
+        </figure>
+        <figure class="polaroid" style="--rot:2deg">
+          <img src="gallery/10.jpg" alt="Polaroid 2" loading="lazy" />
+          <figcaption class="caption">My Favorite</figcaption>
+        </figure>
+        <figure class="polaroid" style="--rot:-1deg">
+          <img src="gallery/13.jpg" alt="Polaroid 3" loading="lazy" />
+          <figcaption class="caption">Cantik Banget Sih 😍</figcaption>
+        </figure>
+        <figure class="polaroid" style="--rot:4deg">
+          <img src="gallery/17.jpg" alt="Polaroid 4" loading="lazy" />
+          <figcaption class="caption">Gorgeous</figcaption>
+        </figure>
       </div>
-      <!-- Slide 3 -->
-      <div class="swiper-slide">
-        <!-- Stiker dan teks -->
-        <div id="stiker3" class="scale0 stiker sembunyi">
-          <img src="kdp2.gif" />
+      <div class="controls" style="justify-content:center; margin-top:16px">
+        <button class="btn secondary" id="openGallery">Lihat galeri mini 📷</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top:0">Linimasa kecil ⏳</h2>
+      <div class="timeline">
+        <div class="moment"><span class="dot"></span>
+          <h4>Kita bertemu di Paralayang Batu - 11 Januari 2025</h4>
+          <p>Pertama kali ketemu di Paralayang Batu—angin dingin, view Malang cakep, ngobrolnya ngalor-ngidul tapi nyaman banget. ✨</p>
         </div>
-        <!-- Konten teks -->
-        <div id="scroll-container" class="blocktext">
-          <p id="teks3" class="itim" style="font-size: 16px; margin-left: 40px">
-            <span class="pink">Hai</span> sayangkuuu cintakuuuuuu
-            duniakuuu semestakuuuuuu, <br><br /><b class="putih merah"><i>happy birthday yaaa 💐</i></b><br />semogaa
-            dengan bertambahnya usiamuuu bisaa menjadiii
-            pribadi yang lebih baikk, panjangg umurr, sehat selaluu, berbakti
-            kepada orang tuaaa, serta segala doa dan cita citamuuu dikabulkann
-            dan segala urusan dipermudahkannn, <i>aminnn</i>.<br /><br />udaa
-            semakin dewasaaa sajaa yaa kamu inii 😋 jangan pernah takut gagal
-            yaaa, aku disiniii bakalan ngedukung kamuuuu selalu, jadiilahh
-            anak yang baik ya sayangg, jangann lupa bersyukurrr,<br /><br />maaf
-            ya kalo aku blum bisa jadi apa yang kamu mauuu, dan maaf bgt kalo
-            selama ini aku sering buat masalah, maaf ya 🫠 aku selalu berdoaa
-            agar kamu tetap berada dalam lindungan-Nya, intinyaa ttep mnjdi
-            pribadii yang lebih baikk.<br /><br />sekalilagii happy birthday
-            sayangkuuu cintakuuuuu,
-            <i>remain a good person whenever and wherever</i> 🥳💐🫶✨
-          </p>
+        <div class="moment"><span class="dot"></span>
+          <h4>Dinner alias Bukber xixi - 22 Maret 2025</h4>
+          <p>Berangkat sore-sore diterpa gerimis. Makanannya hangat, obrolannya lebih hangat. ☔🍽️</p>
+        </div>
+        <div class="moment"><span class="dot"></span>
+          <h4>Pantai Tanjung Asmara - 19 April 2025</h4>
+          <p>Date di pantai: pasir nempel, kamera kerja lembur. Habis foto-foto lanjut misi utama—ikan bakar. Perut kenyang, hati senang. 🏖️🔥</p>
+        </div>
+        <div class="moment"><span class="dot"></span>
+          <h4>Wisata Dusun Kuliner - 8 Mei 2025</h4>
+          <p>Namanya “kuliner”, tapi yang bikin jatuh cinta justru taman bunganya. Nyasar dikit, foto banyak—vibes-nya juara. 🌼📸</p>
+        </div>
+        <div class="moment"><span class="dot"></span>
+          <h4>Semi Hiking di Coban Srikandi - 8 Mei 2025</h4>
+          <p>Modal nekat, jarang olahraga tapi kok kuat juga. Ngos-ngosan terbayar lunas sama suara air terjun. 💦🥾</p>
+        </div>
+        <div class="moment"><span class="dot"></span>
+          <h4>Piknik agak dadakan - 3 Agustus 2025</h4>
+          <p>Piknik spontan! Kompor ngadat jadi sewa di tempat. Tetap seru—menu andalan: grill daging + pemandangan. 🍜🌿</p>
+        </div>
+        <div class="moment"><span class="dot"></span>
+          <h4>Mountain Date Akhirnya - 7 September 2025</h4>
+          <p>Akhirnya ke gunung juga. 11.000 mdpl (versi hati) kok berasa EZ—padahal napas tinggal separo 😆. Puncaknya: terlalu ramai!</p>
+        </div>
+        <div class="moment"><span class="dot"></span>
+          <h4>Pantai Watu Leter &amp; Tribun Sunset - 11 Oktober 2025</h4>
+          <p>Hujan deras bikin sedikit panik, tapi habis itu langit bersih. Pulangnya aman, bonus sunset tipis-tipis. 🌧️➡️🌇</p>
         </div>
       </div>
-     
+    </section>
+
+    <section class="card" style="text-align:center">
+      <h2 style="margin-top:0">Buat sebuah harapan ✨</h2>
+      <p class="subtitle" style="text-align:center">Ketuk lilin untuk meniupnya.
+      <br/>Pesan baru akan muncul saat apinya padam.</p>
+      <button class="btn" id="candleBtn" style="margin-top:10px">🕯️ Tiup</button>
+      <p id="wish" style="margin-top:14px; display:none">Harapanmu aman bersamaku. Mari wujudkan bersama. 💖</p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>Dibuat dengan 💗 khusus untuk <span id="nameFooter">Sadil</span>, kesayanganku xixi</span>. <span style="opacity:.65"></span></small>
+  </footer>
+
+  <!-- Modal Hadiah -->
+  <dialog id="giftModal" aria-labelledby="giftTitle">
+    <div class="modal">
+      <h3 id="giftTitle" style="margin:0 0 6px">Kejutan kecil 🎁</h3>
+      <p style="color:var(--muted); margin-top:0">Pilih satu — aku berhutang! (Kita bisa lakukan semuanya… aku nggak bakal bilang.)</p>
+      <ul style="margin-left: 18px; color: var(--muted)">
+        <li>Sarapan di tempat tidur + film santai</li>
+        <li>Kencan melihat bintang</li>
+        <li>Pijat kaki &amp; perawatan skincare</li>
+      </ul>
+      <div class="controls" style="justify-content:flex-end">
+        <button class="btn secondary" id="closeGift">Tutup</button>
+      </div>
     </div>
-   
-    <!-- Paginasi Swiper -->
-    <div class="swiper-pagination"></div>
-  </div>
+  </dialog>
 
-  <!-- Library JavaScript Swiper -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Modal Galeri -->
+  <dialog id="galleryModal" aria-labelledby="galleryTitle">
+    <div class="modal lightbox">
+      <div class="lb-header">
+        <div class="lb-title" id="galleryTitle">Galeri kita</div>
+        <button class="btn secondary" id="closeGallery">Tutup</button>
+      </div>
+      <div class="lb-main">
+        <button class="iconbtn" id="galleryPrev" aria-label="Sebelumnya">⟨</button>
+        <img id="galleryMainImg" alt="Foto galeri" loading="lazy" />
+        <button class="iconbtn" id="galleryNext" aria-label="Berikutnya">⟩</button>
+      </div>
+      <div class="lb-caption" id="galleryCaption">&nbsp;</div>
+      <div class="lb-thumbs" id="galleryThumbs"></div>
+    </div>
+  </dialog>
 
-  <!-- Skrip JavaScript -->
   <script>
-    // Inisialisasi variabel dan konstanta
-    var teksSekarang = 1;
-    const body = document.querySelector("body");
-    audio = new Audio('' + linkmp3.src); // Membuat objek audio
+    // ===== Personalisasi nama di satu tempat =====
+    const NAME = 'Cinta'; // ← ubah ke nama pasanganmu sekali, akan otomatis tampil di semua bagian
+    document.getElementById('nameTarget').textContent = NAME;
+    // document.getElementById('nameFooter').textContent = NAME;
 
-    // Inisialisasi Swiper
-    var swiper = new Swiper(".mySwiper", {
-      pagination: {
-        el: ".swiper-pagination",
-        dynamicBullets: false,
-      },
-      on: {
-        // Event listener untuk perubahan slide
-        slideChange: function () {
-          var currentIndex = swiper.activeIndex;
+    // ===== Generator hati melayang =====
+    const hearts = document.getElementById('hearts');
+    const HEART_COUNT = 24;
+    for (let i = 0; i < HEART_COUNT; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart';
+      const left = Math.random() * 100;
+      const size = 12 + Math.random() * 16;
+      const delay = Math.random() * 8;
+      const duration = 10 + Math.random() * 14;
+      const top = 100 + Math.random() * 40; // mulai dari bawah viewport
+      h.style.left = left + 'vw';
+      h.style.top = top + 'vh';
+      h.style.width = size + 'px';
+      h.style.height = size + 'px';
+      h.style.animation = `floatUp ${duration}s linear ${delay}s infinite`;
+      hearts.appendChild(h);
+    }
 
-          // Menambahkan efek animasi ketika slide berubah
-          teksSekarang++;
-          teksScale = document.querySelector('#teks' + teksSekarang);
-          stikerScale = document.querySelector('#stiker' + teksSekarang);
-          setTimeout(function () {
-            teksScale.classList.add("scale1");
-            stikerScale.classList.add("scale1");
+    // ===== Konfeti =====
+    const confetti = (() => {
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      let particles = []; let W, H; let running = false;
+      const colors = ['#ff7aa2', '#ffd166', '#9ad1ff', '#baffc9', '#cdb4db'];
+      const resize = () => {
+        const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+        canvas.width = Math.floor(innerWidth * dpr);
+        canvas.height = Math.floor(innerHeight * dpr);
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        W = innerWidth; H = innerHeight;
+      };
+      const rand = (min, max) => Math.random() * (max - min) + min;
+      const burst = (count = 150) => {
+        resize();
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: W/2 + rand(-80,80),
+            y: H/2 + rand(-40,40),
+            r: rand(2,6),
+            c: colors[(Math.random()*colors.length)|0],
+            vx: rand(-6,6),
+            vy: rand(-10,-4),
+            g: rand(.08,.22),
+            a: 1,
+            s: Math.random() < .5 ? 'rect' : 'arc',
+            rot: rand(0,Math.PI),
+            vr: rand(-.2,.2)
+          });
+        }
+        if (!running) { running = true; requestAnimationFrame(loop); }
+      };
+      const draw = p => {
+        ctx.globalAlpha = p.a;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.c;
+        if (p.s === 'rect') ctx.fillRect(-p.r, -p.r, p.r*2, p.r*2);
+        else { ctx.beginPath(); ctx.arc(0,0,p.r,0,Math.PI*2); ctx.fill(); }
+        ctx.restore();
+      };
+      const loop = () => {
+        ctx.clearRect(0,0,W,H);
+        particles.forEach(p => {
+          p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.a -= .01;
+        });
+        particles = particles.filter(p => p.a > 0 && p.y < H + 40);
+        particles.forEach(draw);
+        if (particles.length) requestAnimationFrame(loop); else running = false;
+      };
+      addEventListener('resize', resize);
+      resize();
+      return { burst };
+    })();
 
-            // Memanggil fungsi untuk animasi khusus pada slide tertentu
-            if (teksSekarang == 3) { katanimasi() }
-          }, 50);
-        },
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+    document.getElementById('confettiBtn').addEventListener('click', () => confetti.burst());
+
+    // ===== Audio =====
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    let playing = false;
+    playBtn.addEventListener('click', async () => {
+      try {
+        if (!playing) { await audio.play(); playing = true; playBtn.textContent = 'Jeda lagu ⏸️'; }
+        else { audio.pause(); playing = false; playBtn.textContent = 'Putar lagu ▶️'; }
+      } catch (e) {
+        alert('Tambahkan sumber audio yang valid dulu!');
+      }
     });
 
-    // Mendapatkan teks dari elemen HTML dan mengosongkan konten teks tersebut
-    var teks = teks3.innerHTML;
-    teks3.innerHTML = "";
-
-    // Fungsi untuk animasi khusus pada slide tertentu
-    function katanimasi() {
-      new TypeIt("#teks3", {
-        strings: ["" + teks],
-        startDelay: 250,
-        speed: 50,
-        cursor: true,
-        afterComplete: function () {
-          clearInterval(scrollInterval);
-          teks3.innerHTML = teks;
-          setInterval(berjatuhan, 200); // Memulai animasi jatuh hati
-        },
-      }).go();
-    }
-
-    // Event listener saat halaman dimuat
-    window.addEventListener("load", (event) => {
-      window.scrollTo(0, 0);
-      var overlay = document.querySelector(".loading-message");
-      overlay.style.display = "none"; // Menyembunyikan overlay loading
-      var tomlv = document.querySelector(".blocklove");
-      tomlv.style.display = "flex"; // Menampilkan tombol love
+    // ===== Lilin & harapan =====
+    const candleBtn = document.getElementById('candleBtn');
+    const wish = document.getElementById('wish');
+    candleBtn.addEventListener('click', () => {
+      confetti.burst(80);
+      wish.style.display = 'block';
+      candleBtn.disabled = true;
+      candleBtn.textContent = '✨ Harapan dikabulkan';
     });
 
-    var sudahKlik = true; // Variabel untuk menentukan apakah tombol sudah diklik
-    document.getElementById('loveIn').innerHTML = '<style>.lovein svg{animation:none;stroke:#ff0000;stroke-width:1.3;fill:none;width:35px;height:35px}</style><label class="lovein"><svg class="line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g transform="translate(2.550170, 3.550158)"><path d="M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z"></path><path d="M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842"></path></g></svg></label><p id="ket">Tap Love</p>';
+    // ===== Modal hadiah =====
+    const giftModal = document.getElementById('giftModal');
+    const closeGift = document.getElementById('closeGift');
+    closeGift.addEventListener('click', () => giftModal.close());
 
-    // Event listener saat tombol love diklik
-    document.getElementById("loveIn").onclick = function () {
-      if (sudahKlik) {
-        audio.play(); // Memainkan audio
-        document.querySelector(".overlay").style.display = "none"; // Menyembunyikan overlay
-        stiker1.classList.add("scale1");
-        teks1.classList.add("scale1"); // Menambahkan efek animasi pada stiker dan teks pertama
-      } else {
-        sudahKlik = true; // Tandai bahwa tombol sudah diklik
-        document.getElementById('loveIn').innerHTML = '<style>.lovein svg{animation:none;stroke:#ff0000;stroke-width:1.3;fill:none;width:35px;height:35px}</style><label class="lovein"><svg class="line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g transform="translate(2.550170, 3.550158)"><path d="M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z"></path><path d="M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842"></path></g></svg></label><p id="ket">Tap Love</p>';
-      }
+    // ===== Mini Galeri (kumpulkan foto dari section polaroid) =====
+    const openGalleryBtn = document.getElementById('openGallery');
+    const galleryModal = document.getElementById('galleryModal');
+    const galleryMainImg = document.getElementById('galleryMainImg');
+    const galleryCaption = document.getElementById('galleryCaption');
+    const galleryThumbs = document.getElementById('galleryThumbs');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    const closeGalleryBtn = document.getElementById('closeGallery');
+
+    const GALLERY_DIR = 'gallery';     // folder fotomu
+    const TOTAL_PHOTOS = 17;           // total file
+    const EXT = 'jpg';                 // ekstensi
+    const ZERO_PAD = true;             // nama 01..09.jpg? true kalau ya
+
+    const polaroidBasenames = new Set(
+      Array.from(document.querySelectorAll('.polaroids img'))
+        .map(img => {
+          try { return new URL(img.src, location.href).pathname.split('/').pop().toLowerCase(); }
+          catch { return img.src.split('/').pop().toLowerCase(); }
+        })
+    );
+
+    const CAPTION_MAP = {
+      '01': 'First Date Kita',
+      '02': 'Pas Bukber Nih',
+      '04': 'Maaf Nyempil Mukaku hehe',
+      '05': 'Gemes banget editannya',
+      '06': 'Beach Date',
+      '07': 'Trend Tiktok',
+      '08': 'Muka judes, Suka banget',
+      '09': 'Waterfall',
+      '11': 'Camp Date',
+      '12': 'Camp Date pake foto kita',
+      '14': 'Mountain Date',
+      '15': 'Kumus kumus',
+      '16': 'Tatapan eaaakk',
+    };
+
+    function getBase(path) { return path.split('/').pop().toLowerCase(); }
+    function getIdFromBase(base) { return base.replace(`.${EXT}`, ''); }
+    function niceDefaultCaption(id) { return `Foto ${id}`; }
+    function getCaption(path) {
+      const base = getBase(path);
+      const id = getIdFromBase(base);
+      const idForCaption = ZERO_PAD ? id : String(parseInt(id, 10)).padStart(2, '0');
+      return CAPTION_MAP[id] ?? niceDefaultCaption(idForCaption);
     }
 
-    // Fungsi untuk membuat animasi jatuh hati
-    function berjatuhan() {
-      const heart = document.createElement("div");
-      heart.innerHTML = "<svg class='line spin' style='opacity:.5;z-index:100' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g transform='translate(2.550170, 3.550158)'><path d='M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z'></path><path d='M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842'></path></g></svg>";
-      heart.className = "heart-icon";
-      heart.style.left = (Math.random() * 95) + "vw"; // Menentukan posisi horizontal
-      heart.style.animationDuration = (Math.random() * 3) + 2 + "s"; // Menentukan durasi animasi
-      document.body.appendChild(heart); // Menambahkan hati ke dalam body
+    const allGalleryPaths = Array.from({ length: TOTAL_PHOTOS }, (_, i) => {
+      const n = i + 1;
+      const name = ZERO_PAD ? String(n).padStart(2, '0') : String(n);
+      return `${GALLERY_DIR}/${name}.${EXT}`;
+    });
+
+    const items = allGalleryPaths
+      .filter(path => !polaroidBasenames.has(path.split('/').pop().toLowerCase()))
+      .map(path => ({ src: path, alt: 'Foto', caption: getCaption(path) }));
+
+    let gi = 0;
+    function renderGallery(idx){
+      if (!items.length) return;
+      gi = (idx + items.length) % items.length;
+      const it = items[gi];
+      galleryMainImg.src = it.src;
+      galleryMainImg.alt = it.alt;
+      galleryMainImg.loading = 'eager';
+      galleryCaption.textContent = it.caption;
+      Array.from(galleryThumbs.querySelectorAll('img')).forEach((im, i)=>{
+        im.classList.toggle('active', i===gi);
+      });
     }
 
-    // Menghapus hati yang sudah jatuh jika jumlahnya lebih dari 100
-    setInterval(function () {
-      var heartArr = document.querySelectorAll(".heart-icon");
-      if (heartArr.length > 100) {
-        heartArr[0].remove();
-      }
-    }, 100);
-
-    // Fungsi untuk mengatur scroll otomatis pada halaman
-    const scrollContainer = document.getElementById("scroll-container");
-    const textContainer = document.getElementById("textsec2");
-
-    function autoScroll() {
-      scrollContainer.scrollTop += 10; // Menggeser posisi scroll
+    function buildThumbs(){
+      galleryThumbs.innerHTML = '';
+      items.forEach((it, i)=>{
+        const btn = document.createElement('button');
+        btn.className = 'thumbbtn';
+        const im = document.createElement('img');
+        im.src = it.src; im.alt = it.alt; im.loading = 'lazy';
+        if(i===gi) im.classList.add('active');
+        btn.appendChild(im);
+        btn.addEventListener('click', ()=>{ renderGallery(i); });
+        galleryThumbs.appendChild(btn);
+      });
     }
 
-    const scrollInterval = setInterval(autoScroll, 50); // Menjalankan scroll otomatis setiap 50ms
+    openGalleryBtn?.addEventListener('click', ()=>{
+      if(!items.length){ alert('Belum ada foto di polaroid. Tambahkan dulu ya!'); return; }
+      buildThumbs();
+      renderGallery(0);
+      galleryModal.showModal();
+    });
+    closeGalleryBtn?.addEventListener('click', ()=> galleryModal.close());
+    galleryPrev?.addEventListener('click', ()=> renderGallery(gi-1));
+    galleryNext?.addEventListener('click', ()=> renderGallery(gi+1));
+    galleryModal?.addEventListener('click', (e)=>{
+      // klik di backdrop untuk menutup
+      const r = galleryModal.getBoundingClientRect();
+      const inDialog = (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom);
+      if(!inDialog) galleryModal.close();
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(!galleryModal.open) return;
+      if(e.key==='ArrowLeft') renderGallery(gi-1);
+      if(e.key==='ArrowRight') renderGallery(gi+1);
+      if(e.key==='Escape') galleryModal.close();
+    });
+
+    // ===== Scroll halus =====
+    document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 
-<footer>
-  <a href="https://himang.my.id">Himang.my.id</a>
-</footer>
-</body>
+  <!--
+  ===============================
+  PANDUAN KUSTOMISASI CEPAT
+  ===============================
+  1) Ubah konstanta NAME di bagian atas <script>.
+  2) Ganti foto di galeri polaroid dengan fotomu.
+  3) Tambahkan lagu: tambahkan <source> di dalam <audio> dengan path .mp3 milikmu.
+  4) Kamu bisa atur warna aksen di :root (–primary, –secondary).
+  5) Ingin tanggal ulang tahun yang tepat? Edit teks badge di header.
+  6) Deploy: simpan sebagai index.html lalu buka di browser atau host di Netlify.
 
+  Catatan Responsif:
+  • Tipografi & padding pakai clamp()—otomatis menyesuaikan ukuran layar.
+  • Grid bergeser dari 1 kolom → 2 kolom mulai ~880px.
+  • Polaroid pakai aspect-ratio 4/5 supaya rapi di mobile.
+  • Modal galeri maksimum 92vw, kontrol panah tetap terlihat.
+  • prefers-reduced-motion akan mematikan animasi berat.
+  • Canvas konfeti sudah HiDPI-aware (tajam di layar retina).
+  • Tombol jadi full-width di layar kecil (<420px) agar mudah diklik.
+  -->
+</body>
 </html>
